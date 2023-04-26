@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * _memcpy - copies information between void pointers.
@@ -89,4 +89,3 @@ char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 
 	return (newptr);
 }
-
