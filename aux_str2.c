@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * _strdup - duplicates a str in the heap memory.
@@ -127,4 +127,3 @@ int _isdigit(const char *s)
 	}
 	return (1);
 }
-
