@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * add_sep_node_end - adds a separator found at the end
@@ -109,4 +109,3 @@ void free_line_list(line_list **head)
 		*head = NULL;
 	}
 }
-
