@@ -1,7 +1,7 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * without_comment - deletes all the comments from the input
+ * without_comment - deletes all comments from the input
  *
  * @in: input string
  * Return: inputs that are without comments
@@ -36,7 +36,7 @@ char *without_comment(char *in)
 }
 
 /**
- * shell_loop - Loop of the shell
+ * shell_loop - Loop of shell
  * @datash: data relevant (av, input, args)
  *
  * Return: no return.
