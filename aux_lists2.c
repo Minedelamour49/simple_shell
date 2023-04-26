@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * add_rvar_node - adds a variable at the end
@@ -59,4 +59,3 @@ void free_rvar_list(r_var **head)
 		*head = NULL;
 	}
 }
-
