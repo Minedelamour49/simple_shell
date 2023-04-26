@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 
 /**
@@ -27,16 +27,16 @@ int is_cdir(char *path, int *i)
  * _which - locates a command
  *
  * @cmd: command name
- * @_environment: environment variable
+ * @_environ: environment variable
  * Return: location of the command.
  */
-char *_which(char *cmd, char **_environment)
+char *_which(char *cmd, char **_environ)
 {
 	char *path, *ptr_path, *token_path, *dir;
 	int len_dir, len_cmd, i;
 	struct stat st;
 
-	path = _getenv("PATH", _environment);
+	path = _getenv("PATH", _environ);
 	if (path)
 	{
 		ptr_path = _strdup(path);
@@ -175,7 +175,7 @@ int cmd_exec(data_shell *datash)
 		return (1);
 	if (exec == 0)
 	{
-		dir = _which(datash->args[0], datash->_environment);
+		dir = _which(datash->args[0], datash->_environ);
 		if (check_error_cmd(dir, datash) == 1)
 			return (1);
 	}
@@ -184,10 +184,10 @@ int cmd_exec(data_shell *datash)
 	if (pd == 0)
 	{
 		if (exec == 0)
-			dir = _which(datash->args[0], datash->_environment);
+			dir = _which(datash->args[0], datash->_environ);
 		else
 			dir = datash->args[0];
-		execve(dir + exec, datash->args, datash->_environment);
+		execve(dir + exec, datash->args, datash->_environ);
 	}
 	else if (pd < 0)
 	{
