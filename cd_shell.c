@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * cd_shell - changes current directory
@@ -42,4 +42,3 @@ int cd_shell(data_shell *datash)
 
 	return (1);
 }
-
