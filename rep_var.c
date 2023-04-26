@@ -1,10 +1,10 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * check_env - checks if the typed variable is an env variable type
+ * check_env - checks if the typed variable is an env variable
  *
  * @h: head of linked list
- * @in: input the string
+ * @in: input string
  * @data: data structure
  * Return: no return
  */
@@ -13,7 +13,7 @@ void check_env(r_var **h, char *in, data_shell *data)
 	int row, chr, j, lval;
 	char **_envr;
 
-	_envr = data->_environment;
+	_envr = data->_environ;
 	for (row = 0; _envr[row]; row++)
 	{
 		for (j = 1, chr = 0; _envr[row][chr]; chr++)
@@ -42,7 +42,7 @@ void check_env(r_var **h, char *in, data_shell *data)
 }
 
 /**
- * check_vars - check if the typed variable is $ or $$?
+ * check_vars - check if the typed variable is $$ or $?
  *
  * @h: head of the linked list
  * @in: input string
@@ -148,7 +148,7 @@ char *rep_var(char *input, data_shell *datash)
 	char *status, *new_input;
 	int olen, nlen;
 
-	status = auxiliary_itoa(datash->status);
+	status = aux_itoa(datash->status);
 	head = NULL;
 
 	olen = check_vars(&head, input, status, datash);
