@@ -1,9 +1,9 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * cd_dot - changes to the parent directory
  *
- * @datash: data relevant (environmentment)
+ * @datash: data relevant (environ)
  *
  * Return: no return
  */
@@ -52,7 +52,7 @@ void cd_dot(data_shell *datash)
 }
 
 /**
- * cd_to - changes to a given directory
+ * cd_to - changes to a directory given
  * by the user
  *
  * @datash: data relevant (directories)
@@ -89,7 +89,7 @@ void cd_to(data_shell *datash)
 /**
  * cd_previous - changes to the previous directory
  *
- * @datash: data relevant (environment)
+ * @datash: data relevant (environ)
  * Return: no return
  */
 void cd_previous(data_shell *datash)
@@ -100,7 +100,7 @@ void cd_previous(data_shell *datash)
 	getcwd(pwd, sizeof(pwd));
 	cp_pwd = _strdup(pwd);
 
-	p_oldpwd = _getenv("OLDPWD", datash->_environment);
+	p_oldpwd = _getenv("OLDPWD", datash->_environ);
 
 	if (p_oldpwd == NULL)
 		cp_oldpwd = cp_pwd;
@@ -114,7 +114,7 @@ void cd_previous(data_shell *datash)
 	else
 		set_env("PWD", cp_oldpwd, datash);
 
-	p_pwd = _getenv("PWD", datash->_environment);
+	p_pwd = _getenv("PWD", datash->_environ);
 
 	write(STDOUT_FILENO, p_pwd, _strlen(p_pwd));
 	write(STDOUT_FILENO, "\n", 1);
@@ -131,7 +131,7 @@ void cd_previous(data_shell *datash)
 /**
  * cd_to_home - changes to home directory
  *
- * @datash: data relevant (environment)
+ * @datash: data relevant (environ)
  * Return: no return
  */
 void cd_to_home(data_shell *datash)
@@ -142,7 +142,7 @@ void cd_to_home(data_shell *datash)
 	getcwd(pwd, sizeof(pwd));
 	p_pwd = _strdup(pwd);
 
-	home = _getenv("HOME", datash->_environment);
+	home = _getenv("HOME", datash->_environ);
 
 	if (home == NULL)
 	{
@@ -163,4 +163,3 @@ void cd_to_home(data_shell *datash)
 	free(p_pwd);
 	datash->status = 0;
 }
-
