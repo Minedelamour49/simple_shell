@@ -1,13 +1,13 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * strcat_cd - function that concatenates the print message for cd error
+ * strcat_cd - function that concatenates the message for cd error
  *
  * @datash: data relevant (directory)
  * @msg: message to print
  * @error: output message
  * @ver_str: counter lines
- * Return: error print message
+ * Return: error message
  */
 char *strcat_cd(data_shell *datash, char *msg, char *error, char *ver_str)
 {
@@ -48,15 +48,15 @@ char *error_get_cd(data_shell *datash)
 	int length, len_id;
 	char *error, *ver_str, *msg;
 
-	ver_str = auxiliary_itoa(datash->counter);
+	ver_str = aux_itoa(datash->counter);
 	if (datash->args[1][0] == '-')
 	{
-		msg = ": Not alowed option ";
+		msg = ": Illegal option ";
 		len_id = 2;
 	}
 	else
 	{
-		msg = ": Unable to cd to ";
+		msg = ": can't cd to ";
 		len_id = _strlen(datash->args[1]);
 	}
 
@@ -78,9 +78,9 @@ char *error_get_cd(data_shell *datash)
 }
 
 /**
- * error_not_found - print error message for command that is not found
+ * error_not_found - generic error message for command not found
  * @datash: data relevant (counter, arguments)
- * Return: Error print message
+ * Return: Error message
  */
 char *error_not_found(data_shell *datash)
 {
@@ -88,7 +88,7 @@ char *error_not_found(data_shell *datash)
 	char *error;
 	char *ver_str;
 
-	ver_str = auxiliary_itoa(datash->counter);
+	ver_str = aux_itoa(datash->counter);
 	length = _strlen(datash->av[0]) + _strlen(ver_str);
 	length += _strlen(datash->args[0]) + 16;
 	error = malloc(sizeof(char) * (length + 1));
@@ -110,10 +110,10 @@ char *error_not_found(data_shell *datash)
 }
 
 /**
- * error_exit_shell - error message for exit in get_exit
+ * error_exit_shell - generic error message for exit in get_exit
  * @datash: data relevant (counter, arguments)
  *
- * Return: Error print message
+ * Return: Error message
  */
 char *error_exit_shell(data_shell *datash)
 {
@@ -121,7 +121,7 @@ char *error_exit_shell(data_shell *datash)
 	char *error;
 	char *ver_str;
 
-	ver_str = auxiliary_itoa(datash->counter);
+	ver_str = aux_itoa(datash->counter);
 	length = _strlen(datash->av[0]) + _strlen(ver_str);
 	length += _strlen(datash->args[0]) + _strlen(datash->args[1]) + 23;
 	error = malloc(sizeof(char) * (length + 1));
@@ -135,12 +135,11 @@ char *error_exit_shell(data_shell *datash)
 	_strcat(error, ver_str);
 	_strcat(error, ": ");
 	_strcat(error, datash->args[0]);
-	_strcat(error, ": number not accepted: ");
+	_strcat(error, ": Illegal number: ");
 	_strcat(error, datash->args[1]);
 	_strcat(error, "\n\0");
 	free(ver_str);
 
 	return (error);
 }
-
 
