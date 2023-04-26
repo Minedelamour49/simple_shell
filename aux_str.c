@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * _strcat - concatenate two strings
@@ -104,4 +104,3 @@ int _strspn(char *s, char *accept)
 	}
 	return (i);
 }
-
