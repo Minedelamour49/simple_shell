@@ -46,7 +46,7 @@ void set_data(data_shell *datash, char **av)
 	}
 
 	datash->_environment[i] = NULL;
-	datash->pid = aux_itoa(getpid());
+	datash->pid = auxiliary_itoa(getpid());
 }
 
 /**
@@ -70,3 +70,4 @@ int main(int ac, char **av)
 		return (255);
 	return (datash.status);
 }
+
